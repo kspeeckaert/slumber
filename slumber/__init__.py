@@ -87,10 +87,10 @@ class Resource(ResourceAttributesMixin, object):
         serializer = self._store["serializer"]
         url = self.url()
 
-        headers = {"accept": serializer.get_content_type()}
+        headers = {"accept": serializer.get_content_type(self._store['format'])}
 
         if not files:
-            headers["content-type"] = serializer.get_content_type()
+            #headers["content-type"] = serializer.get_content_type()
             if data is not None:
                 data = serializer.dumps(data)
 
